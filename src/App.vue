@@ -1,6 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import TheContent from './components/TheContent.vue'
 </script>
 
 <template>
@@ -13,7 +13,7 @@ import TheWelcome from './components/TheWelcome.vue'
   </header>
 
   <main>
-    <TheWelcome />
+    <TheContent />
   </main>
 </template>
 
@@ -30,11 +30,11 @@ import TheWelcome from './components/TheWelcome.vue'
 
 header {
   line-height: 1.5;
+  display: flex;
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  margin: 2rem;
 }
 
 a,
@@ -50,32 +50,4 @@ a,
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-}
 </style>
