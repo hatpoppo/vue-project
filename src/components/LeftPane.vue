@@ -2,9 +2,9 @@
 import axios from "axios";
 import { onMounted,reactive } from "vue";
 const state = reactive({
-   users: [] ,
-   count:0
-   })
+                users: [] ,
+                count:0
+              })
 
 onMounted(() => {
   axios.get('/api/users')
