@@ -4,14 +4,13 @@ import Contents from "./Contents.vue";
 
 import { reactive } from "vue";
 const state = reactive({
-  user: null,
+  user: 9,
 });
 </script>
 <template>
   <div class="content">
-    {{ state.user }}
     <LeftPane @user-at="(n) => (state.user = n)" />
-    <Contents />
+    <Contents v-model:user-id="state.user" />
   </div>
 </template>
 <style>

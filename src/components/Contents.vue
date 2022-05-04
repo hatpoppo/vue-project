@@ -1,29 +1,26 @@
 <script setup>
-import Home from './Home.vue'
-import Posts from './Posts.vue'
-import { ref } from 'vue'
-const currentTab = ref('Home')
+import Home from "./Home.vue";
+import Posts from "./Posts.vue";
+import { ref } from "vue";
+const currentTab = ref("Home");
 const tabs = {
   Home,
-  Posts
-}
+  Posts,
+};
+defineProps({
+  userId: Number,
+});
 </script>
 <template>
   <div class="right_pane">
-    <button
-       v-for="(_, tab) in tabs"
-       :key="tab"
-       :class="['tab-button', { active: currentTab === tab }]"
-       @click="currentTab = tab"
-     >
+    <button v-for="(_, tab) in tabs" :key="tab" :class="['tab-button', { active: currentTab === tab }]" @click="currentTab = tab">
       {{ tab }}
     </button>
-	  <component :is="tabs[currentTab]" class="tab"></component>
-
+    <component :is="tabs[currentTab]" v-model:user-id="userId" class="tab"></component>
   </div>
 </template>
 <style>
-.right_pane{
+.right_pane {
   background-color: blanchedalmond;
   min-width: 500px;
 }
