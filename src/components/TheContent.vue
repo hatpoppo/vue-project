@@ -1,17 +1,21 @@
 <script setup>
-import LeftPane from './LeftPane.vue'
-import Contents from './Contents.vue'
+import LeftPane from "./LeftPane.vue";
+import Contents from "./Contents.vue";
 
+import { reactive } from "vue";
+const state = reactive({
+  user: null,
+});
 </script>
 <template>
   <div class="content">
-  <LeftPane />
-  <Contents />
-
+    {{ state.user }}
+    <LeftPane @user-at="(n) => (state.user = n)" />
+    <Contents />
   </div>
 </template>
 <style>
-.content{
+.content {
   display: flex;
   min-height: 300px;
 }
