@@ -1,6 +1,6 @@
 <script setup>
-import Home from "./Home.vue";
-import Posts from "./Posts.vue";
+import Home from "./tabs/Home.vue";
+import Posts from "./tabs/Posts.vue";
 import { ref } from "vue";
 const currentTab = ref("Home");
 const tabs = {
