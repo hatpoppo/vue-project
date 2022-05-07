@@ -10,12 +10,12 @@ const state = reactive({
 });
 watch(
   () => props.userId,
-  async (newword, oldword) => {
+  async (newUserId, oldUserId) => {
+    console.log({ newUserId: newUserId, oldUserId: oldUserId, userId: props.userId });
     axios
-      .get("/api/reminders")
+      .get(`/api/users/${newUserId}/reminders`)
       .then(function (response) {
         // handle success
-        console.log(response);
         state.reminders = response.data.reminders;
       })
       .catch(function (error) {
@@ -29,6 +29,13 @@ watch(
 );
 </script>
 <template>
-  <div class="">home userId:{{ props.userId }}</div>
+  <div class="">userId:{{ props.userId }}</div>
+  <h1>Reminders</h1>
+  <p v-if="!state.reminders">Loading...</p>
+  <ul v-else>
+    <li v-for="reminder in state.reminders" :key="reminder.id" :data-id="`${reminder.id}`">
+      {{ reminder.text }}
+    </li>
+  </ul>
 </template>
 <style></style>

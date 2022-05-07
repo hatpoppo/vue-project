@@ -27,7 +27,19 @@ export default function makeServer({ environment = "development" } = {}) {
 
     seeds(server) {
       server.create("user", { name: "Bob" });
-      server.create("user", { name: "Alice" });
+      server.create("user", {
+        name: "Alice",
+        reminders: [
+          server.create("reminder", { text: "My Reminder" }),
+        ],
+      });
+      server.create("user", {
+        name: "Ken",
+        reminders: [
+          server.create("reminder", { text: "Do taxes" }),
+          server.create("reminder", { text: "Do Best" }),
+        ],
+      });
       server.create("reminder");
     },
 
@@ -41,11 +53,11 @@ export default function makeServer({ environment = "development" } = {}) {
         return schema.reminders.all();
       });
 
-      this.get('/api/users/:id/reminders', (schema, request) => {
+      this.get('/users/:id/reminders', (schema, request) => {
         let userId = request.params.id
         let user = schema.users.find(userId)
         return user.reminders
-      })
+      });
     },
   });
 }
